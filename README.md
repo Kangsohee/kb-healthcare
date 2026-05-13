@@ -76,7 +76,7 @@ src/
 
 ## 주요 구현
 
-- **인증 흐름**: 로그인 성공 시 accessToken은 Zustand(메모리), refreshToken은 sessionStorage 보관. 앱 초기화 시 silent refresh로 세션 복구. 401 응답 시 인터셉터가 자동으로 토큰 갱신 후 재시도 (동시 요청은 pending queue로 처리)
-- **가상 스크롤**: `useVirtualizer`로 할 일 목록 렌더링. `estimateSize: 96`, `overscan: 3`. IntersectionObserver로 페이지 끝 도달 시 다음 페이지 자동 로드
+- **인증 흐름**: 로그인 성공 시 accessToken은 Zustand(메모리), refreshToken은 `document.cookie`(`token`) 보관. 앱 초기화 시 silent refresh로 세션 복구. 401 응답 시 인터셉터가 자동으로 토큰 갱신 후 재시도 (동시 요청은 pending queue로 처리)
+- **가상 스크롤**: `useVirtualizer`로 할 일 목록 렌더링. `estimateSize: 104` (카드 96px + 하단 갭 8px), `overscan: 3`. IntersectionObserver로 페이지 끝 도달 시 다음 페이지 자동 로드
 - **삭제 확인**: task ID를 직접 입력해야 삭제 버튼이 활성화되는 이중 확인 UX
 - **접근성**: WCAG 2.1 AA 기준. 모달 포커스 트랩, ESC 닫기, `role="alertdialog"`, `aria-live` 영역, `focus-visible` 전역 스타일
