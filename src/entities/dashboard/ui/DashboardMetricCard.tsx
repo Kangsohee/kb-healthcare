@@ -11,8 +11,8 @@ export function DashboardMetricCard({ label, value, icon }: DashboardMetricCardP
       aria-label={`${label}: ${value}건`}
     >
       <span aria-hidden="true">{icon}</span>
-      <strong className="text-3xl font-bold text-primary">{value}</strong>
-      <span className="text-sm font-medium text-text-secondary">{label}</span>
+      <strong className="text-4xl font-bold text-primary">{value}</strong>
+      <span className="text-lg font-bold text-text-primary">{label}</span>
     </div>
   )
 }
