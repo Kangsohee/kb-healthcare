@@ -23,7 +23,7 @@ function LNBItem({ to, label, icon: Icon, isActive }: LNBItemProps) {
         className={cn(
           'flex items-center gap-3 rounded-lg px-3 py-2.5 text-base font-medium transition-colors duration-150',
           isActive
-            ? 'bg-primary/10 text-primary font-semibold'
+            ? 'border-l-2 border-primary bg-primary/10 text-primary font-semibold'
             : 'text-text-secondary hover:bg-bg-subtle hover:text-text-primary',
         )}
       >

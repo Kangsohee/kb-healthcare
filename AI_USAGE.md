@@ -72,7 +72,7 @@ AI(Claude Code)가 아래 모든 소스 파일을 생성·수정했습니다.
 
 | 파일 | 내용 |
 |------|------|
-| `task/` | TaskItem·TaskListResponse·TaskDetailResponse·DeleteTaskResponse 타입; getTasks·getTaskDetail·deleteTask API 함수; useTasks(useInfiniteQuery)·useTaskDetail 훅; TaskCard UI |
+| `task/` | TaskItem·TaskListResponse·TaskDetailResponse·DeleteTaskResponse 타입; getTasks·getTaskDetail·deleteTask API 함수; useTasks(useInfiniteQuery)·useTaskDetail 훅(`retry: false` — 404는 재시도 불필요); TaskCard UI |
 | `dashboard/` | DashboardResponse 타입; getDashboard API; useDashboard 훅; DashboardMetricCard 컴포넌트 |
 | `user/` | UserResponse 타입; getUser API; useUser 훅 |
 
@@ -80,7 +80,7 @@ AI(Claude Code)가 아래 모든 소스 파일을 생성·수정했습니다.
 
 | 파일 | 내용 |
 |------|------|
-| `auth/model/signInSchema.ts` | zod 스키마 (email, password 영문·숫자 8~24자) |
+| `auth/model/signInSchema.ts` | zod 스키마 (email, password 영문·숫자 8~24자) — 이메일 에러 메시지 SCREENS.md 스펙에 맞게 수정 |
 | `auth/model/useSignIn.ts` | useMutation + 로그인 성공 시 쿠키 `token` 저장 |
 | `auth/ui/SignInForm.tsx` | react-hook-form + zodResolver, isValid 기반 버튼 활성화, label 연결 |
 | `auth/ui/ErrorModal.tsx` | role=alertdialog, errorMessage 표시 |
@@ -92,7 +92,7 @@ AI(Claude Code)가 아래 모든 소스 파일을 생성·수정했습니다.
 | 파일 | 내용 |
 |------|------|
 | `app-layout/ui/GNB.tsx` | sticky 헤더, 인증 상태 분기 (UserCircle / LogIn), HeartPulse 브랜드 아이콘 |
-| `app-layout/ui/LNB.tsx` | 태블릿(768px~)에서 아이콘 전용, 데스크톱(1024px~)에서 전체 텍스트 표시, aria-current |
+| `app-layout/ui/LNB.tsx` | 태블릿(768px~)에서 아이콘 전용, 데스크톱(1024px~)에서 전체 텍스트 표시, aria-current, 활성 메뉴 좌측 `border-l-2 border-primary` (DESIGN.md §10 스펙) |
 | `app-layout/ui/BottomNav.tsx` | 모바일(<768px) 하단 고정 내비게이션, aria-current |
 | `app-layout/ui/AppLayout.tsx` | GNB + LNB + BottomNav + main 반응형 레이아웃 |
 | `task-virtual-list/ui/TaskVirtualList.tsx` | useVirtualizer(estimateSize:104, overscan:3) + IntersectionObserver 무한 스크롤 |
@@ -156,6 +156,7 @@ Pretendard 폰트, focus-visible 전역, `prefers-reduced-motion` 대응, 웹킷
 | 반응형 구현 | "모바일에서 하단 내비게이션, 태블릿에서 아이콘 전용 사이드바, 데스크톱에서 전체 사이드바로 3단계 반응형을 구현해줘" |
 | 스펙 검증 | "requirement.md와 openapi.yaml 두 파일을 보고 지금까지 개발한 게 오버개발은 없는지, 파일 간 정합성과 충돌하는 부분은 없는지 검증해줘" |
 | 목 데이터 | "헬스케어 테마에 맞는 현실적인 할 일 200개를 순번 포함해서 목 데이터로 넣어줘" |
+| 최종 코드 검증 | "설계 결정의 근거 일관성, 문서↔코드 정합성, AI 오류 수정 여부, 접근성·타입 안전성 디테일 4가지 기준으로 이슈 없을 때까지 검증하고 수정해줘" |
 
 ---
 
@@ -175,6 +176,8 @@ Pretendard 폰트, focus-visible 전역, `prefers-reduced-motion` 대응, 웹킷
 - 요구사항 대비 오버개발 여부 판단 (탭 분리 기능은 요구사항 외로 제외 결정)
 - OpenAPI 스펙 대비 구현 정합성 최종 확인
 - 전체 코드 최종 검토
+- README.md 실제 구현(document.cookie, estimateSize: 104)과 불일치 발견 후 수정 지시
+- 코드와 설계 문서 간 정합성 4기준 검증 수행 및 3건 수정 확인 (이메일 에러 메시지, LNB 활성 보더, useTaskDetail retry)
 
 ---
 
