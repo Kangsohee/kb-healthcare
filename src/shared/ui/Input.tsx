@@ -60,9 +60,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
             className="absolute right-3 top-1/2 -translate-y-1/2 text-text-secondary hover:text-text-primary"
           >
             {showPassword ? (
-              <EyeOff aria-hidden="true" size={16} />
+              <EyeOff aria-hidden="true" size={20} />
             ) : (
-              <Eye aria-hidden="true" size={16} />
+              <Eye aria-hidden="true" size={20} />
             )}
           </button>
         )}

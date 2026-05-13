@@ -36,6 +36,12 @@
     }
   }
 
+  /* 브라우저 기본 비밀번호 표시 버튼 제거 (커스텀 Eye 아이콘과 중복 방지) */
+  input::-ms-reveal,
+  input::-ms-clear {
+    display: none;
+  }
+
   /* 커스텀 스크롤바 (webkit / webview) */
   ::-webkit-scrollbar {
     width: 6px;
