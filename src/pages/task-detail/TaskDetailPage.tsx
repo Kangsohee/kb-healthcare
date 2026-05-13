@@ -66,13 +66,13 @@ export function TaskDetailPage() {
           <div className="flex flex-col gap-1">
             <p className="text-xl font-semibold text-text-primary">{data.title}</p>
           </div>
-          <div className="flex flex-col gap-1">
-            <span className="text-xs font-medium uppercase tracking-wide text-text-secondary">메모</span>
-            <p className="text-sm text-text-primary">{data.memo || '—'}</p>
+          <div className="flex flex-col gap-1.5">
+            <span className="text-base font-semibold text-text-primary">메모</span>
+            <p className="text-base text-text-secondary">{data.memo || '—'}</p>
           </div>
-          <div className="flex flex-col gap-1">
-            <span className="text-xs font-medium uppercase tracking-wide text-text-secondary">등록일</span>
-            <p className="text-sm text-text-secondary">{formatDate(data.registerDatetime)}</p>
+          <div className="flex flex-col gap-1.5">
+            <span className="text-base font-semibold text-text-primary">등록일</span>
+            <p className="text-base text-text-secondary">{formatDate(data.registerDatetime)}</p>
           </div>
         </div>
       </div>
